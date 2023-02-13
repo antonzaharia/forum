@@ -3,6 +3,7 @@
   <%= link_to "New discussion", new_discussion_path, class: "btn btn-primary" %>
 </div>
 
+<%= turbo_stream_from "discussions" %>
 <div class="row">
   <div class="col">
     <div id="discussions">
