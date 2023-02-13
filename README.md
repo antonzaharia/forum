@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A forum website build with Hotwire
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Template used
+[Railsbytes.com](https://railsbytes.com/public/templates/xkjs12)
+```
+rails app:template LOCATION='https://railsbytes.com/script/xkjs12'
+```
