@@ -34,31 +34,8 @@ class DiscussionsController < ApplicationController
   def update
     respond_to do |format|
       if @discussion.update(discussion_params)
-        @discussion.broadcast_replace(partial: "discussions/header", locals: { discussion: @discussion })
+        DiscussionBroadcaster.new(@discussion).broadcast!
 
-        if @discussion.saved_change_to_category_id?
-          old_category_id, new_category_id = @discussion.saved_change_to_category_id
-          old_category = Category.find(old_category_id)
-          new_category = Category.find(new_category_id)
-
-          # remove it from the old category list / insert it to new list
-          @discussion.broadcast_remove_to(old_category)
-          @discussion.broadcast_append_to(new_category)
-
-          # Update categories by replacing them. This updates the counter in the sidebar
-          old_category.reload.broadcast_replace_to("categories")
-          new_category.reload.broadcast_replace_to("categories")
-        end
-
-        if @discussion.saved_change_to_closed?
-          @discussion.broadcast_action_to(
-            @discussion,
-            action: :replace,
-            target: "new_post_form",
-            partial: "discussions/posts/form",
-            locals: { post: @discussion.posts.new }
-          )
-        end
         format.html { redirect_to @discussion, notice: "Discussion updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
