@@ -1,6 +1,6 @@
 # README
 
-A forum website build with Hotwire
+A forum website built with Hotwire
 
 [Live website](https://lively-star-7477.fly.dev/)
 
