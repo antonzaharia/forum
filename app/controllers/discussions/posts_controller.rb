@@ -12,7 +12,13 @@ module Discussions
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to discussion_path(@discussion), notice: "Post created." }
+          if params.dig("post", "redirect").present?
+            @pagy, @posts = pagy(@discussion.posts.order(created_at: :desc))
+            format.html { redirect_to discussion_path(@discussion, page: @pagy.last), notice: "Post created." }
+          else
+            @post = @discussion.posts.new
+            format.turbo_stream
+          end
         else
           format.html { render :new, status: :unprocessable_entity }
           format.turbo_stream
@@ -37,7 +43,7 @@ module Discussions
       @post.destroy!
 
       respond_to do |format|
-        format.html { redirect_to @post.discussion, notice: "Post deleted."}
+        format.html { redirect_to @post.discussion, notice: "Post deleted." }
         format.turbo_stream
       end
     end
