@@ -2,6 +2,8 @@
 
 A forum website build with Hotwire
 
+[Live website](https://lively-star-7477.fly.dev/)
+
 ### Template used for Bootstrap
 [Railsbytes.com](https://railsbytes.com/public/templates/xkjs12)
 ```

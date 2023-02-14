@@ -97,6 +97,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.0.14)
+      rails
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.12.0)
@@ -266,6 +268,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1)
   debug
   devise (~> 4.8)
+  dockerfile-rails (>= 1.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

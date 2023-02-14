@@ -82,3 +82,5 @@ gem "pagy", "~> 6.0"
 gem "pry", "~> 0.14.2"
 
 gem "noticed", "~> 1.6"
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
