@@ -62,7 +62,7 @@ class Discussion < ApplicationRecord
     return "You're not receiving notifications from this thread." if user.nil?
 
     if subscription = subscription_for(user)
-      if subscription.subscription_type = "optout"
+      if subscription.subscription_type == "optout"
         "You're ignoring this thread."
       else
         "You're receiving notifications because you've subscribed to this thread."
